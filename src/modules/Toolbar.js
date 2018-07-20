@@ -3,6 +3,9 @@ import IconAlignCenter from 'quill/assets/icons/align-center.svg';
 import IconAlignRight from 'quill/assets/icons/align-right.svg';
 import { BaseModule } from './BaseModule';
 
+import VQuill from 'quill';
+const Quill = window.Quill || VQuill;
+
 let Parchment = {};
 let FloatStyle = {};
 let MarginStyle = {};
@@ -14,7 +17,7 @@ export class Toolbar extends BaseModule {
         FloatStyle = new Parchment.Attributor.Style('float', 'float');
         MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
         DisplayStyle = new Parchment.Attributor.Style('display', 'display');
-        
+
 		// Setup Toolbar
         this.toolbar = document.createElement('div');
         Object.assign(this.toolbar.style, this.options.toolbarStyles);
