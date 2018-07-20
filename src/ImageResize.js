@@ -4,6 +4,9 @@ import { DisplaySize } from './modules/DisplaySize';
 import { Toolbar } from './modules/Toolbar';
 import { Resize } from './modules/Resize';
 
+import VQuill from 'quill';
+const Quill = window.Quill || VQuill;
+
 const knownModules = { DisplaySize, Toolbar, Resize };
 
 /**
@@ -268,5 +271,5 @@ if (Quill) {
 	  };
 	}
 	
-    window.Quill.register('modules/imageResize', ImageResize);
+    Quill.register('modules/imageResize', ImageResize);
 }
