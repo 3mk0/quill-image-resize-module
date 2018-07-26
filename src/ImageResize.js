@@ -4,9 +4,6 @@ import { DisplaySize } from './modules/DisplaySize';
 import { Toolbar } from './modules/Toolbar';
 import { Resize } from './modules/Resize';
 
-import VQuill from 'quill';
-const Quill = window.Quill || VQuill;
-
 const knownModules = { DisplaySize, Toolbar, Resize };
 
 /**
@@ -211,66 +208,5 @@ export default class ImageResize {
         }
     };
 }
-		
-if (Quill) {
-	
-	//BEGIN allow image alignment styles
-	const ImageFormatAttributesList = [
-		'alt',
-		'height',
-		'width',
-		'style'
-	];
-		
-	var BaseImageFormat = Quill.import('formats/image');
-	class ImageFormat extends BaseImageFormat {
-	  static formats(domNode) {
-		return ImageFormatAttributesList.reduce(function(formats, attribute) {
-		  if (domNode.hasAttribute(attribute)) {
-			formats[attribute] = domNode.getAttribute(attribute);
-		  }
-		  return formats;
-		}, {});
-	  }
-	  format(name, value) {
-		if (ImageFormatAttributesList.indexOf(name) > -1) {
-		  if (value) {
-			this.domNode.setAttribute(name, value);
-		  } else {
-			this.domNode.removeAttribute(name);
-		  }
-		} else {
-		  super.format(name, value);
-		}
-	  }
-	}
 
-	Quill.register(ImageFormat, true);
-	//END allow image alignment styles
-
-
-	//Add support for IE 11
-	if (typeof Object.assign != 'function') {
-	  Object.assign = function(target) {
-	    'use strict';
-	    if (target == null) {
-	      throw new TypeError('Cannot convert undefined or null to object');
-	    }
-
-	    target = Object(target);
-	    for (var index = 1; index < arguments.length; index++) {
-	      var source = arguments[index];
-	      if (source != null) {
-	        for (var key in source) {
-	          if (Object.prototype.hasOwnProperty.call(source, key)) {
-	            target[key] = source[key];
-	          }
-	        }
-	      }
-	    }
-	    return target;
-	  };
-	}
-	
-    Quill.register('modules/imageResize', ImageResize);
-}
+module.exports = ImageResize
