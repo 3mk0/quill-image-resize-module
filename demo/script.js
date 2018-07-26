@@ -1,6 +1,8 @@
 var quill = new Quill('#editor', {
 	theme: 'snow',
 	modules: {
-		imageResize: {}
+		imageResize: {
+            parchment: Quill.import('parchment')
+        }
 	}
 });

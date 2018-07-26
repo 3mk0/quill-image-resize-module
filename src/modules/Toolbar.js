@@ -3,8 +3,9 @@ import IconAlignCenter from 'quill/assets/icons/align-center.svg';
 import IconAlignRight from 'quill/assets/icons/align-right.svg';
 import { BaseModule } from './BaseModule';
 
-import VQuill from 'quill';
-const Quill = window.Quill || VQuill;
+// import VQuill from 'quill';
+// const Quill = window.Quill || VQuill;
+const Quill = window.Quill;
 
 // let Parchment = {};
 // let FloatStyle = {};
@@ -78,7 +79,6 @@ export class Toolbar extends BaseModule {
         // Dirty, but does the trick
         this.img.width = this.img.width + 1;
         window.setTimeout(() => {
-            console.log('timer ' + this.img.width);
             this.img.width = this.img.width - 1;
         }, 100);
     };
