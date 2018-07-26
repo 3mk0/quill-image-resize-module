@@ -209,4 +209,4 @@ export default class ImageResize {
     };
 }
 
-module.exports = ImageResize
+// module.exports = ImageResize
