@@ -4,6 +4,9 @@ import { DisplaySize } from './modules/DisplaySize';
 import { Toolbar } from './modules/Toolbar';
 import { Resize } from './modules/Resize';
 
+import VQuill from 'quill';
+const Quill = window.Quill || VQuill;
+
 const knownModules = { DisplaySize, Toolbar, Resize };
 
 /**
@@ -24,9 +27,9 @@ export default class ImageResize {
             moduleClasses = options.modules.slice();
         }
 
-        if (options.parchment) {
-            this.parchment = options.parchment;
-        }
+        // if (options.parchment) {
+        //     this.parchment = options.parchment;
+        // }
 
         // Apply options to default options
         this.options = defaultsDeep({}, options, DefaultOptions);
@@ -61,8 +64,8 @@ export default class ImageResize {
 
         this.modules.forEach(
             (module) => {
-                module.onCreate(this.parchment);
-                // module.onCreate();
+                // module.onCreate(this.parchment);
+                module.onCreate();
             },
         );
 
@@ -210,7 +213,7 @@ export default class ImageResize {
 }
 		
 if (Quill) {
-
+	
 	//BEGIN allow image alignment styles
 	const ImageFormatAttributesList = [
 		'alt',
@@ -244,6 +247,7 @@ if (Quill) {
 
 	Quill.register(ImageFormat, true);
 	//END allow image alignment styles
+
 
 	//Add support for IE 11
 	if (typeof Object.assign != 'function') {
