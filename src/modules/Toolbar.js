@@ -70,6 +70,7 @@ export class Toolbar extends BaseModule {
     _triggerUpdate = () => {
         // Dirty, but does the trick
         this.img.width = this.img.width + 1;
+        MaxWidthStyle.add(this.img, '100%');
         window.setTimeout(() => {
             this.img.width = this.img.width - 1;
             MaxWidthStyle.add(this.img, '100%');
