@@ -86,7 +86,7 @@ export class Toolbar extends BaseModule {
 					FloatStyle.remove(this.img);
 					MarginStyle.remove(this.img);
                     DisplayStyle.remove(this.img);
-					MaxWidthStyle.remove(this.img);
+					// MaxWidthStyle.remove(this.img);
 				}				else {
 						// otherwise, select button and apply
 					this._selectButton(button);
