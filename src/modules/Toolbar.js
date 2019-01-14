@@ -72,6 +72,7 @@ export class Toolbar extends BaseModule {
         this.img.width = this.img.width + 1;
         window.setTimeout(() => {
             this.img.width = this.img.width - 1;
+            MaxWidthStyle.add(this.img, '100%');
         }, 100);
     };
 
