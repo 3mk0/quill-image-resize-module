@@ -7,6 +7,7 @@ const Parchment = window.Quill.imports.parchment;
 const FloatStyle = new Parchment.Attributor.Style('float', 'float');
 const MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
 const DisplayStyle = new Parchment.Attributor.Style('display', 'display');
+const MaxWidthStyle = new Parchment.Attributor.Style('max-width', 'max-width');
 
 export class Toolbar extends BaseModule {
     onCreate = (parchment) => {
@@ -18,6 +19,8 @@ export class Toolbar extends BaseModule {
         // Setup Buttons
         this._defineAlignments();
         this._addToolbarButtons();
+
+        MaxWidthStyle.add(this.img, '100%');
     };
 
 	// The toolbar and its children will be destroyed when the overlay is removed
@@ -82,7 +85,8 @@ export class Toolbar extends BaseModule {
 						// If applied, unapply
 					FloatStyle.remove(this.img);
 					MarginStyle.remove(this.img);
-					DisplayStyle.remove(this.img);
+                    DisplayStyle.remove(this.img);
+					MaxWidthStyle.remove(this.img);
 				}				else {
 						// otherwise, select button and apply
 					this._selectButton(button);
