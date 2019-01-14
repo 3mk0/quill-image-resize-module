@@ -37,7 +37,7 @@ export class Toolbar extends BaseModule {
                     DisplayStyle.add(this.img, 'inline');
                     FloatStyle.add(this.img, 'left');
                     MarginStyle.add(this.img, '0 1em 1em 0');
-                    MaxWidthStyle.add(this.img, '100%');
+                    // MaxWidthStyle.add(this.img, '100%');
                     this._triggerUpdate();
                 },
                 isApplied: () => FloatStyle.value(this.img) == 'left',
@@ -48,7 +48,7 @@ export class Toolbar extends BaseModule {
                     DisplayStyle.add(this.img, 'block');
                     FloatStyle.remove(this.img);
                     MarginStyle.add(this.img, 'auto');
-                    MaxWidthStyle.add(this.img, '100%');
+                    // MaxWidthStyle.add(this.img, '100%');
                     this._triggerUpdate();
                 },
                 isApplied: () => MarginStyle.value(this.img) == 'auto',
@@ -59,7 +59,7 @@ export class Toolbar extends BaseModule {
                     DisplayStyle.add(this.img, 'inline');
                     FloatStyle.add(this.img, 'right');
                     MarginStyle.add(this.img, '0 0 1em 1em');
-                    MaxWidthStyle.add(this.img, '100%');
+                    // MaxWidthStyle.add(this.img, '100%');
                     this._triggerUpdate();
                 },
                 isApplied: () => FloatStyle.value(this.img) == 'right',
@@ -70,10 +70,9 @@ export class Toolbar extends BaseModule {
     _triggerUpdate = () => {
         // Dirty, but does the trick
         this.img.width = this.img.width + 1;
-        MaxWidthStyle.add(this.img, '100%');
         window.setTimeout(() => {
             this.img.width = this.img.width - 1;
-            MaxWidthStyle.add(this.img, '100%');
+            // MaxWidthStyle.add(this.img, '100%');
         }, 100);
     };
 
